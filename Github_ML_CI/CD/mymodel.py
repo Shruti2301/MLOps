@@ -94,3 +94,7 @@ print(f'\n Mean Absolute Error = {mae_1}, Mean Squared Error = {mse_1}')
 
 # Plot the results
 plot_predictions(X_train, y_train, X_test, y_test, y_preds)
+
+#Write metrics to file
+with open('metrics.txt', 'w') as outfile:
+    outfile.write(f'\n Mean Absolute Error = {mae_1}. Mean Squared Error = {mse_1}.')
