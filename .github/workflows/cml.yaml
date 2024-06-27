@@ -1,0 +1,38 @@
+# Name of the workflow
+name: mlops-test-regression-tensorflow
+
+# Trigger the workflow on push events
+on: [push]
+
+jobs:
+  run:
+    # The job will run on the latest version of Ubuntu
+    runs-on: ubuntu-latest
+
+    # Specify the Docker container to use for the job
+    container:
+      image: dvcorg/cml-py3:latest
+
+    steps:
+      # Step to check out the repository containing the workflow file
+      - uses: actions/checkout@v3
+
+      # Step to install dependencies and train the model
+      - name: Train my model
+        env:
+          # Pass the GitHub token as an environment variable
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Install the required Python packages listed in requirements.txt
+          pip install -r requirements.txt
+          
+          # Run the Python script to train the model
+          python mymodel.py
+
+      # Step to upload the metrics file
+      - name: Upload Metrics
+        uses: actions/upload-artifact@v2
+        with:
+          name: metrics
+          path: metrics.txt
+
