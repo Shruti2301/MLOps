@@ -27,4 +27,4 @@ jobs:
           pip install -r requirements.txt
           
           # Run the Python script to train the model
-          python train.py
+          python mymodel.py
