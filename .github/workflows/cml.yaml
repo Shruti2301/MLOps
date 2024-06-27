@@ -29,22 +29,9 @@ jobs:
           # Run the Python script to train the model
           python mymodel.py
 
-          echo "## Model Metrics" >report.md
-          cat metrics.txt >>report.md
-
-          echo " /n## Model Performance"
-          echo "Model Performance metrics are on the plot below."
-
-          cml-publish model_results.png --md >>report.md
-
-          cml-send-comment report.md
-
       # Step to upload the metrics file
       - name: Upload Metrics
         uses: actions/upload-artifact@v2
         with:
           name: metrics
           path: metrics.txt
-
-          
-
