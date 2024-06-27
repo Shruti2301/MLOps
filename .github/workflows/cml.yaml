@@ -28,3 +28,9 @@ jobs:
           
           # Run the Python script to train the model
           python mymodel.py
+
+          #Train a new read me file and put info in it
+          echo "## Model Metrics" > report.md
+          cat metrics.txt >> report.cmd
+
+          cml-send-comment report.md
