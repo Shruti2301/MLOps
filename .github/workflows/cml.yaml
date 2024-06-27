@@ -7,10 +7,11 @@ on: [push]
 jobs:
   run:
     # The job will run on the latest version of Ubuntu
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
 
     # Specify the Docker container to use for the job
-    container: docker:/dvcorg/cml-py3:latest
+    container:
+      image: dvcorg/cml-py3:latest
 
     steps:
       # Step to check out the repository containing the workflow file
