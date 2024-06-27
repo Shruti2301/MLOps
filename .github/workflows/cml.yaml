@@ -1,7 +1,11 @@
 name: mlops-test-regression-tensorflow
 
-# Trigger the workflow on push events
-on: [push]
+# Trigger the workflow on push events, excluding FastAPI-related files
+on:
+  push:
+    paths-ignore:
+      - 'fastapi/**'
+      - 'path/to/fastapi/files/**'
 
 jobs:
   run:
@@ -27,6 +31,7 @@ jobs:
           
           # Run the Python script to train the model
           python mymodel.py
+          
       # Step to upload the metrics file
       - name: Upload Metrics
         uses: actions/upload-artifact@v2
